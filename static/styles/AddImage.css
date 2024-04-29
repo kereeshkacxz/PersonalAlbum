@@ -1,0 +1,116 @@
+*{
+    margin:0;
+    padding: 0;
+    font-family: "Dosis";
+
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    background-color: rgb(143, 138, 219);
+    height: 100vh;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+img {
+    border: 5px solid black;
+    aspect-ratio: 1/1;
+    height: 450px;
+    object-fit: cover;
+}
+label{
+    font-size: 24px;
+    font-family: "Dosis";
+}
+
+input[type=file]{
+    width: 350px;
+    height: 30px;
+    font-size: 20px;
+    font-family: "Dosis";
+}
+.wrapperColumn{
+    gap: 20px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapperColumns{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+.buttonAdd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all;
+    transition-delay: 0.3s;
+    transition: 0.3s;
+    
+    border-radius: 10px;
+    border: 0px;
+    background-color: rgb(43, 73, 204);
+    color: white;
+    width: 240px;
+    height: 40px;
+    font-size: 20px;
+    font-family: "Dosis";
+}
+.buttonAdd:hover{
+    transform: scale(1.05);
+
+    background-color: blue;
+}
+
+.buttonCancel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all;
+    transition-delay: 0.3s;
+    transition: 0.3s;
+    
+    border-radius: 10px;
+    border: 0px;
+    background-color: red;
+    width: 240px;
+    height: 40px;
+    font-size: 25px;
+
+    color: white;
+    font-size: 20px;
+    font-family: "Dosis";
+}
+.buttonCancel:hover{
+    transform: scale(1.05);
+    background-color: #b82020;
+
+}
+input[type=text]{
+	display: block;
+	width: 100%;
+	margin-bottom: 15px;
+	padding: 10px;
+	box-sizing: border-box;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+    font-size: 25px;
+    font-weight: bolder;
+}
+p{
+    padding: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}

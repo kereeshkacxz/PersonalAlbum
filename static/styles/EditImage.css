@@ -1,0 +1,219 @@
+*{
+    margin:0;
+    padding: 0;
+}
+body{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    background-color: rgb(143, 138, 219);
+    height: 100vh;
+    gap: 40px;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+img {
+    border: 5px solid black;
+    aspect-ratio: 1/1;
+    height: 80vh;
+    object-fit: cover;
+}
+label{
+    font-size: 24px;
+    font-weight: 700;
+    font-family: "Dosis";
+    padding:10px;
+}
+input[type=file]{
+    width: 350px;
+    height: 30px;
+    font-size: 20px;
+    font-family: "Dosis";
+}
+.wrapperColumn{
+    gap: 20px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapperColumns{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+.buttonAdd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all;
+    transition-delay: 0.3s;
+    transition: 0.3s;
+    
+    border-radius: 10px;
+    border: 0px;
+    background-color: rgb(6, 148, 6);
+    color: white;
+    width: 240px;
+    height: 40px;
+    font-size: 20px;
+    font-family: "Dosis";
+}
+.buttonAdd:hover{
+    transform: scale(1.05);
+    background-color: rgb(7, 94, 7);
+}
+
+.buttonCancel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all;
+    transition-delay: 0.3s;
+    transition: 0.3s;
+    
+    border-radius: 10px;
+    border: 0px;
+    background-color: rgb(38, 0, 255);
+    width: 240px;
+    height: 40px;
+
+    color: white;
+    font-size: 20px;
+    font-family: "Dosis";
+}
+.buttonCancel:hover{
+    transform: scale(1.05);
+
+    background-color: #0c0664;
+
+}
+
+.buttonDelete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all;
+    transition-delay: 0.3s;
+    transition: 0.3s;
+    
+    border-radius: 10px;
+    border: 0px;
+    background-color: red;
+    width: 240px;
+    height: 40px;
+
+    color: white;
+    font-size: 20px;
+    font-family: "Dosis";
+}
+.buttonDelete:hover{
+    transform: scale(1.05);
+
+    background-color: #b82020;
+
+}
+dialog::backdrop {
+    background-image: linear-gradient(
+      45deg,
+      magenta,
+      rebeccapurple,
+      dodgerblue,
+      green
+    );
+    opacity: 0.75;
+  }
+dialog[open]{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    aspect-ratio: 3/2;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+}
+dialog > p{
+    font-family: "Dosis";
+    font-weight: bold;
+    font-size: 40px;
+}
+.dialogButtonsWrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.buttonDialogDelete{
+    transition: all;
+    transition-delay: 0.3s;
+    transition: 0.3s;
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 12px 32px;
+    font-size: 24px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: "Dosis";
+
+}
+.buttonDialogCancel{
+    transition: all;
+    transition-delay: 0.3s;
+    transition: 0.3s;
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 12px 32px;
+    font-size: 24px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: "Dosis";
+}
+.buttonDialogDelete:hover{
+    transform: scale(1.05);
+}
+.buttonDialogCancel:hover{
+    transform: scale(1.05);
+}
+.imgWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.imgWrapper > p{
+    font-family: "Dosis";
+    font-size: 28px;
+    font-weight: bolder;
+}
+input[type=text]{
+	display: block;
+    width: 350px;
+	padding: 10px;
+	box-sizing: border-box;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+    font-size: 22px;
+    font-weight: bolder;
+    font-family: "Dosis";
+}
+
+p{
+    padding: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}

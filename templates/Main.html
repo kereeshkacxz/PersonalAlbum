@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/Main.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Album</title>
+</head>
+<body>
+    <div class="buttonWrapper">
+    <div class="AddImage"><a href ="./addimage">Add Image</a></div>
+    <div class="Logout"><a href ="./logoutHandle">Logout</a></div>
+    </div>
+    <div class="imagesWrapper">
+    {% for image in img%}
+    <a href="./editimage/{{image[0]}}">
+        <div id ={{image[0]}} class="image">
+            <!-- <p>id = {{image[0]}}</p>
+            <p>name = {{image[1]}}</p>
+            <p>caption = {{image[2]}}</p> -->
+            <img src="/static/upload/{{login}}/{{image[3]}}"/>
+        </div>
+    </a>
+    {% endfor %}
+    </div>
+    <div class="navBar">
+        {% if page > 1 %}
+            <div class="navButton"><a href ="./setpage/{{page - 1}}"><</a></div>
+        {% endif %}
+
+        
+        {%if page > 2%}
+        <div class="navButton"><a href ="./setpage/{{page-2}}">{{page - 2}}</a></div>
+        {% endif %}
+
+        {%if page > 1 %}
+        <div class="navButton"><a href ="./setpage/{{page-1}}">{{page -1}}</a></div>
+        {% endif %}
+
+        <div class="navButton" style="background-color: rgb(0, 0, 255); box-sizing: border-box; border: 5px solid black;"><a href ="./setpage/{{page}}">{{page}}</a></div>
+        
+        {%if page < lastPage %}
+        <div class="navButton"><a href ="./setpage/{{page+1}}">{{page + 1}}</a></div>
+        {% endif %}
+
+        {%if page < lastPage-1 %}
+        <div class="navButton"><a href ="./setpage/{{page+2}}">{{page + 2}}</a></div>
+        {% endif %}
+
+        {% if page < lastPage %}
+            <div class="navButton"><a href ="./setpage/{{page + 1}}">></a></div>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/EditImage.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+
+<html>
+  <head>
+    <title>Edit Image</title>
+  </head>
+  <body>
+        <div class="imgWrapper">
+        <p>ID : {{curImg[0]}}</p>
+        <img src="/static/upload/{{login}}/{{curImg[3]}}">
+        </div>  
+      <form method="post" action="/editimageHandle/{{curImg[0]}}" enctype ="multipart/form-data" >
+            <div class="wrapper">
+            <div class="wrapperColumns">
+                <div class="wrapperColumn">
+                    <label for="name">Name:</label>
+                    <label for="caption">Caption:</label>
+                </div>
+                <div class="wrapperColumn">
+                    <input type="text" id="name" name="name" value ="{{curImg[1]}}" required>                 
+                    <input type="text" id="caption" value ="{{curImg[2]}}" name="caption">                           
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: row;gap: 40px; margin-top: 40px;">
+                <button class="buttonAdd" type="submit" value="Submit">Save Changes</button>
+                <input class="buttonCancel" type="button" name="cancel" value="Cancel" onClick="window.location.href='/';" /></div>
+                <input class="buttonDelete" type="button" name="delete" value="Delete" onClick="window.myDialog.showModal()" /></div>
+
+        </div>
+        </form>
+        <dialog id="myDialog">  
+            <!-- <button autofocus onClick="window.myDialog.close()" >Close</button> -->
+            <p>Confirmation!</p>
+            <div class="dialogButtonsWrapper">
+                <button class="buttonDialogDelete" autofocus onClick="window.location.href='/deleteimageHandle/{{curImg[0]}}'">Delete</button> 
+                <button class="buttonDialogCancel" onClick="window.myDialog.close()"> Cancel</button> 
+            </div>
+        </dialog>   
+  </body>
+</html>

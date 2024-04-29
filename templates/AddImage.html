@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/AddImage.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+
+<html>
+  <head>
+    <title>Add Image</title>
+  </head>
+  <body>
+      <form method="post" action="/addimageHandle" enctype ="multipart/form-data" >
+            <div class="wrapper">
+            {%if flag == 1:%}
+            <p style="color: red;">You can upload only image! .png, .jpg, .jpeg, .gif, .bmp, .webp</p>
+            {%elif flag == 2%}
+            <p style="color: red;">Name has an incorrect form!</p>
+            {%endif%}
+            <div class="wrapperColumns">
+                <div class="wrapperColumn"> 
+                    <input type="text" id="name" name="name" placeholder="Name" required>                 
+                    <input type="text" id="caption" placeholder="Caption" name="caption">                
+                    <input type="file" id="imagefile" name="imagefile" accept="image/*"  onchange="previewFile()" required>                
+                </div>
+            </div>
+            <img src="../static/icons/placeholder.png">
+            <div style="display: flex; flex-direction: row;gap: 40px; margin-top: 40px;">
+                <button class="buttonAdd" type="submit" value="Submit">Add Image</button>
+                <input class="buttonCancel" type="button" name="cancel" value="Cancel" onClick="window.location.href='./';" /></div>
+        </div>
+        </form>
+  </body>
+  <script>
+    function previewFile() {
+    var preview = document.querySelector('img');
+    var file    = document.querySelector('input[type=file]').files[0];
+    var reader  = new FileReader();
+
+    reader.onloadend = function () {
+      preview.src = reader.result;
+    }
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      preview.src = "";
+    }
+    }
+    function handleF5Key() {
+    if (event.keyCode !== 116) return; // Check for F5 key code (116)
+        event.preventDefault(); // Prevent default page refresh
+        window.location.href = "/addimage"; // Redirect to new page
+    }
+    window.addEventListener('keydown', handleF5Key);
+    function checkReload(){
+    const pageAccessedByReload = (
+    (window.performance.navigation && window.performance.navigation.type === 1) ||
+    window.performance
+      .getEntriesByType('navigation')
+      .map((nav) => nav.type)
+      .includes('reload'));
+      if (pageAccessedByReload)
+      window.location.href = "/addimage";
+}
+      </script>
+</html>

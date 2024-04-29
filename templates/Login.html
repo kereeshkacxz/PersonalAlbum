@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/Login.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Album</title>
+</head>
+<body onload="checkReload();">
+    <div class="main">
+        <h1>Album for you</h1>
+        <form name="authorized" action="/loginHandle" method="post">
+            <input type="text"
+                   id="login"
+                   name="login"
+                   size="16"
+                   maxlength="16"
+                   placeholder="Login" 
+                   pattern="[a-z]{1}[a-z0-9_]{0,15}"
+                   oninput="setCustomValidity('')"
+                   oninvalid="setCustomValidity('Starts with a letter, can contains lowercase Latin letters, digits, and underscores.')"
+                   required>
+            <div class="password-wrapper">
+                <input type="password"
+                   id="password"
+                   name="password"
+                   pattern="[a-zA-Z0-9_]{6,}"
+                   oninput="setCustomValidity('')"
+                   oninvalid="setCustomValidity('Minimum lenght - 6. Can contains Latin letters, digits, and underscores.')"
+                   placeholder="Password" required>
+                <a href="#" class="password-control" onclick="return show_hide_password(this);"><img id="img" src="../static/icons/view.png"/></a>
+            </div>
+            {% if flag == 1 %}
+                <p style="color: red;">Login has an incorrect format!</p>
+            {% elif flag == 2 %}
+                <p style="color: red;">Password has an incorrect format!</p>
+            {% elif flag == 3 %}
+                <p style="color: red;">Wrong password!</p>
+            {% elif flag == 4 %}
+                <p style="color: red;">User doesn't exist!</p>
+            {% elif flag == 5 %}
+                <p style="color: green;">Successful registration!</p>
+            {% endif %}
+
+            <div class="wrap">
+                <button type="submit"
+                        onclick="solve()">
+                    <p>Log In</p>
+                </button>
+            </div>
+        </form>
+        <p>Not registered? 
+              <a href="/register"
+               style="text-decoration: none;">
+                Create an account
+            </a>
+        </p>
+    </div>
+</body>
+<script>
+    function show_hide_password(target){
+	var input = document.getElementById('password');
+	if (input.getAttribute('type') == 'password') {
+		document.getElementById('img').src ="../static/icons/hidden.png";
+		input.setAttribute('type', 'text');
+	} else {
+		document.getElementById('img').src ="../static/icons/view.png";
+		input.setAttribute('type', 'password');
+	}
+	return false;
+}
+
+function validateForm() {
+  let login = document.forms["registred"]["login"].value;
+  const len_login = login.length;
+  if (len_login < 1 || len_login > 16) return false;
+  if (!login[0].isLetter()) return false;
+  for (let i = 1; i < len_login; i++) {
+    const char = login[i];
+    if (!/^[a-z0-9_]/.test(char)) return false;
+  }
+
+  let password = document.forms["registred"]["password"].value;
+  const len_paswword = password.length;
+  if (len_paswword < 6) return false;
+  for (let i = 1; i < len_paswword; i++) {
+    const char = password[i];
+    if (!/^[a-zA-Z0-9_]/.test(char)) return false;
+  }
+  
+  return true;
+}
+function handleF5Key() {
+    if (event.keyCode !== 116) return; // Check for F5 key code (116)
+        event.preventDefault(); // Prevent default page refresh
+        window.location.href = "/login"; // Redirect to new page
+    }
+window.addEventListener('keydown', handleF5Key);
+function checkReload(){
+    const pageAccessedByReload = (
+  (window.performance.navigation && window.performance.navigation.type === 1) ||
+    window.performance
+      .getEntriesByType('navigation')
+      .map((nav) => nav.type)
+      .includes('reload'));
+      if (pageAccessedByReload)
+      window.location.href = "/login";
+}
+</script>
+</html>
